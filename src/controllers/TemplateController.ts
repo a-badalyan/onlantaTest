@@ -15,23 +15,17 @@ import { Response } from "express";
 @JsonController("/template")
 export default class TemplateController {
   @Post()
-  async createTemplate(
-    @Body() body: CreateTemplateBody,
-    @Res() res: Response
-  ): Promise<void> {
+  async createTemplate(@Body() body: CreateTemplateBody, @Res() res: Response) {
     const template = await createTemplateHandler(body);
 
     res.status(200).json(template.prepareTemplate());
   }
 
   @Get("/:id")
-  async getTemplate(
-    @Param("id") id: number,
-    @Res() res: Response
-  ): Promise<void> {
+  async getTemplate(@Param("id") id: number, @Res() res: Response) {
     const template = await getTemplateHandler(id);
 
-    if (!template) throw new HttpError(404);
+    if (!template) return new HttpError(404);
 
     res.status(200).json(template.prepareTemplate());
   }
