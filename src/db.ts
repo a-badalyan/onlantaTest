@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Template } from "./entity/Template";
-import { Document } from "./entity/Document";
-import { TemplateField } from "./entity/TemplateField";
-import { DocumentField } from "./entity/DocumentField";
+import { Template } from "./entities/Template";
+import { Document } from "./entities/Document";
+import { TemplateField } from "./entities/TemplateField";
+import { DocumentField } from "./entities/DocumentField";
 import { POSTGRES_URI } from "../config";
 import { Initial1694623701960 } from "./migration/1694623701960-initial";
 

@@ -1,9 +1,9 @@
 import { HttpError } from "routing-controllers";
 import checkDocumentMatchTemplate from "../checkDocumentMatchTemplate";
 import db from "../db";
-import { Document } from "../entity/Document";
-import { DocumentField } from "../entity/DocumentField";
-import { Template } from "../entity/Template";
+import { Document } from "../entities/Document";
+import { DocumentField } from "../entities/DocumentField";
+import { Template } from "../entities/Template";
 import { CreateDocumentBody } from "../interfaces";
 
 export default async function createDocumentHandler(

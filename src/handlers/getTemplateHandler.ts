@@ -1,5 +1,5 @@
 import db from "../db";
-import { Template } from "../entity/Template";
+import { Template } from "../entities/Template";
 
 export default async function getTemplateHandler(
   id: number

@@ -1,5 +1,5 @@
 import db from "../db";
-import { Document } from "../entity/Document";
+import { Document } from "../entities/Document";
 
 export default async function getDocumentHandler(
   id: number

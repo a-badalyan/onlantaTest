@@ -1,6 +1,6 @@
 import db from "../db";
-import { Template } from "../entity/Template";
-import { TemplateField } from "../entity/TemplateField";
+import { Template } from "../entities/Template";
+import { TemplateField } from "../entities/TemplateField";
 import { CreateTemplateBody } from "../interfaces";
 
 export default async function createTemplateHandler(
