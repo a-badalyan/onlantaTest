@@ -9,13 +9,13 @@ export default function checkDocumentMatchTemplate({
   documentFields: Array<DocumentField>;
 }) {
   if (templateFields.length !== documentFields.length)
-    return new HttpError(400, "Missing template required fields");
+    throw new HttpError(400, "Document fields and template fields mismatch");
 
   documentFields.forEach((df) => {
     const templateField = templateFields.find((tf) => tf.name === df.name);
 
     if (!templateField)
-      return new HttpError(400, "Document field and template field mismatch");
+      throw new HttpError(400, "Document field and template fields mismatch");
 
     if (
       templateField.type === FieldType.date &&
@@ -24,6 +24,6 @@ export default function checkDocumentMatchTemplate({
       return;
 
     if (typeof df.value !== templateField.type)
-      return new HttpError(400, `Field ${df.name} mismatch template type`);
+      throw new HttpError(400, `Field ${df.name} mismatch template type`);
   });
 }

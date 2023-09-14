@@ -4,7 +4,7 @@ import {
   useExpressServer,
 } from "routing-controllers";
 import TemplateController from "./controllers/TemplateController";
-import { HttpErrorHandler } from "./errorMiddleware";
+import { HttpErrorHandler } from "./HttpErrorHandler";
 import DocumentController from "./controllers/DocumentController";
 
 const controllersOptions: RoutingControllersOptions = {
