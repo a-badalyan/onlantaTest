@@ -1,3 +1,4 @@
+import { HttpError } from "routing-controllers";
 import checkDocumentMatchTemplate from "../checkDocumentMatchTemplate";
 import db from "../db";
 import { Document } from "../entity/Document";
@@ -14,6 +15,8 @@ export default async function createDocumentHandler(
     .leftJoinAndSelect("template.fields", "field")
     .where("template.id = :id", { id: params.template })
     .getOne();
+
+  if (!template) throw new HttpError(400, "Invalid template");
 
   checkDocumentMatchTemplate({
     templateFields: template.fields,
