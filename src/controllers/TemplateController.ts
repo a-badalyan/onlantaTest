@@ -4,29 +4,27 @@ import {
   Get,
   Param,
   JsonController,
-  Res,
   HttpError,
 } from "routing-controllers";
 import { CreateTemplateBody } from "../interfaces";
 import createTemplateHandler from "../handlers/createTemplateHandler";
 import getTemplateHandler from "../handlers/getTemplateHandler";
-import { Response } from "express";
 
 @JsonController("/template")
 export default class TemplateController {
   @Post()
-  async createTemplate(@Body() body: CreateTemplateBody, @Res() res: Response) {
+  async createTemplate(@Body() body: CreateTemplateBody) {
     const template = await createTemplateHandler(body);
 
-    res.status(200).json(template.prepareTemplate());
+    return template.prepareTemplate();
   }
 
   @Get("/:id")
-  async getTemplate(@Param("id") id: number, @Res() res: Response) {
+  async getTemplate(@Param("id") id: number) {
     const template = await getTemplateHandler(id);
 
     if (!template) return new HttpError(404);
 
-    res.status(200).json(template.prepareTemplate());
+    return template.prepareTemplate();
   }
 }
