@@ -5,7 +5,7 @@ import { Document } from "./entities/Document";
 import { TemplateField } from "./entities/TemplateField";
 import { DocumentField } from "./entities/DocumentField";
 import { POSTGRES_URI } from "../config";
-import { Initial1694623701960 } from "./migration/1694623701960-initial";
+import { Initial1694623701960 } from "./migrations/1694623701960-initial";
 
 const db = new DataSource({
   type: "postgres",
