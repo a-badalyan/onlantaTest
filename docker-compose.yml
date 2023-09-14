@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  main:
+    image: node:16
+    environment:
+      POSTGRES_URI: postgres://postgres:postgres@postgres/onlanta
+      PORT: 3000
+    volumes:
+      - .:/code
+    stdin_open: true
+    tty: true
+    working_dir: /code
+    ports: ["3000:3000", "9229:9229"]
+    command: "npm run start"
+    depends_on: [postgres]
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_DB: onlanta
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: ["5432:5432"]
