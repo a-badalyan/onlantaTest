@@ -7,7 +7,7 @@ import {
 } from "typeorm";
 import { Template } from "./Template";
 import { DocumentField } from "./DocumentField";
-import { FieldType } from "../interfaces";
+import { DocumentType, FieldType } from "../interfaces";
 
 @Entity("documents")
 export class Document {
@@ -28,7 +28,7 @@ export class Document {
   })
   documentFields: Array<DocumentField>;
 
-  prepareDocument() {
+  prepareDocument(): DocumentType {
     return {
       id: this.id,
       name: this.name,

@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { TemplateField } from "./TemplateField";
+import { TemplateType } from "../interfaces";
 
 @Entity("templates")
 export class Template {
@@ -12,7 +13,7 @@ export class Template {
   @OneToMany(() => TemplateField, (field) => field.template, { cascade: true })
   fields: Array<TemplateField>;
 
-  prepareTemplate() {
+  prepareTemplate(): TemplateType {
     return {
       id: this.id,
       name: this.name,

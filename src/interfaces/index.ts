@@ -3,7 +3,6 @@ import {
   IsNumber,
   IsString,
   IsArray,
-  IsObject,
   ValidateNested,
   IsDefined,
 } from "class-validator";
@@ -67,8 +66,6 @@ export class CreateTemplateBody {
   attributeFields: Array<TemplateField>;
 }
 
-export class CreateTemplateResponse extends Template {}
-
 export class CreateDocumentBody {
   @IsString()
   name: string;
@@ -89,3 +86,25 @@ export class TemplateInfo {
   @IsString()
   name: string;
 }
+
+export type DocumentType = {
+  id: number;
+  name: string;
+  template: {
+    id: number;
+    name: string;
+  };
+  attributeFields: Array<{
+    name: string;
+    value: string | number | Date;
+  }>;
+};
+
+export type TemplateType = {
+  id: number;
+  name: string;
+  attributeFields: Array<{
+    name: string;
+    type: string;
+  }>;
+};
